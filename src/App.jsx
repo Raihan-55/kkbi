@@ -17,7 +17,7 @@ function App() {
       case "search":
         return <Search />;
       default:
-        return <Home />;
+        return <Search />;
     }
   };
 
