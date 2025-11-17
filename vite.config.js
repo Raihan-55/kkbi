@@ -9,10 +9,10 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.svg", "robots.txt", "icons/*.png"],
+      includeAssets: ["favicon.svg", "robots.txt", "icons/*.png", "LOGORN.png"],
       manifest: {
-        name: "Dictionary",
-        short_name: "Dictionary",
+        name: "Kamus Kecil Bahasa Indonesia",
+        short_name: "KKBI",
         description: "Contoh PWA dengan Vite + React",
         theme_color: "#ffffff",
         background_color: "#ffffff",
@@ -28,6 +28,11 @@ export default defineConfig({
           {
             src: "/icon-512.png",
             sizes: "512x512",
+            type: "image/png",
+          },
+          {
+            src: "/LOGORN.png",
+            sizes: "192x192",
             type: "image/png",
           },
         ],
@@ -65,6 +70,17 @@ export default defineConfig({
               expiration: {
                 maxEntries: 50,
                 maxAgeSeconds: 60 * 60 * 24,
+              },
+            },
+          },
+          {
+            urlPattern: /^https:\/\/github\.com\/.*\.png$/i,
+            handler: "CacheFirst",
+            options: {
+              cacheName: "github-images",
+              expiration: {
+                maxEntries: 20,
+                maxAgeSeconds: 60 * 60 * 24 * 365,
               },
             },
           },
