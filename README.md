@@ -1,16 +1,86 @@
-# React + Vite
+# Kamus Kecil Bahasa Indonesia (KKBI)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplikasi web modern untuk menemukan arti kata-kata Bahasa Indonesia berdasarkan KBBI. Dibangun sebagai Progressive Web App (PWA), aplikasi ini dapat diinstal di perangkat Anda dan berfungsi penuh bahkan saat offline.
 
-Currently, two official plugins are available:
+## Memulai Proyek
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Pastikan Anda sudah menginstal Node.js di sistem Anda (disarankan v18+).
 
-## React Compiler
+### Buat Proyek React dengan Vite
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Jika ingin membuat proyek baru dari awal, jalankan:
 
-## Expanding the ESLint configuration
+```bash
+npm create vite@latest kkbi -- --template react
+cd kkbi
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Namun, untuk proyek ini, Anda cukup clone repo dan install dependensi.
+
+### Instalasi Semua Dependensi
+
+```bash
+npm install
+```
+
+Jika ingin menambah/instal manual:
+
+```bash
+npm install lucide-react
+npm install -D vite-plugin-pwa
+npm install tailwindcss @tailwindcss/vite
+```
+
+### Mulai Koding
+
+Struktur folder utama:
+
+- `src/components` — komponen UI (navbar, dll)
+- `src/pages` — halaman utama (SearchPage, ListPage, ProfilePage)
+- `src/data` — data kamus statis (`kamus.js`)
+- `public/` — aset gambar/icon/logo
+
+### Mode Pengembangan
+
+```bash
+npm run dev
+```
+
+Akses aplikasi di `http://localhost:5173`
+
+### Mode Produksi
+
+```bash
+npm run build
+```
+
+### Preview Produksi
+
+```bash
+npm run preview
+```
+
+### Pengujian PWA di Mobile
+
+1. Build aplikasi dengan `npm run build`
+2. Install serve untuk menjalankan folder dist hasil build:
+   ```bash
+   npm install -g serve
+   ```
+3. Jalankan server produksi:
+   ```bash
+   serve -s dist
+   ```
+4. Perhatikan alamat Network yang muncul di terminal (misal: http://192.168.1.10:3000).
+5. Pastikan laptop dan HP Anda terhubung ke jaringan Wi-Fi yang sama.
+6. Buka browser Chrome di HP Anda dan ketikkan alamat Network tadi.
+7. Aplikasi akan terbuka, dan Anda akan melihat opsi untuk menginstalnya.
+
+---
+
+**Catatan:**
+
+- Semua data kamus sudah statis, tidak ada API eksternal.
+- Jika ingin menambah kata, edit file `src/data/kamus.js`.
+
+---
